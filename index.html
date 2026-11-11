@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Điều khiển đèn ESP32</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="panel" id="panel" data-lamp="off">
+
+    <p class="conn" id="conn" data-state="connecting">
+      <span class="conn-dot"></span>
+      <span id="connText">Đang kết nối broker…</span>
+    </p>
+
+    <!-- Bóng đèn -->
+    <svg class="bulb" viewBox="0 0 200 260" role="img" aria-label="Bóng đèn">
+      <circle class="glow" cx="100" cy="100" r="95"/>
+      <path class="glass"
+            d="M100 18
+               C60 18 34 48 34 86
+               C34 112 48 128 60 144
+               C68 154 70 162 70 176
+               L130 176
+               C130 162 132 154 140 144
+               C152 128 166 112 166 86
+               C166 48 140 18 100 18 Z"/>
+      <path class="filament" d="M84 176 L90 108 L100 124 L110 108 L116 176"/>
+      <rect class="base" x="72" y="180" width="56" height="14" rx="4"/>
+      <rect class="base" x="76" y="198" width="48" height="14" rx="4"/>
+      <rect class="base" x="82" y="216" width="36" height="14" rx="6"/>
+    </svg>
+
+    <h1 id="lampText">Đèn đang tắt</h1>
+    <p class="hint" id="hint">Bấm nút bên dưới để bật đèn ở ESP32.</p>
+
+    <button class="toggle" id="toggleBtn" type="button" disabled>Bật đèn</button>
+  </main>
+
+  <!-- Thư viện MQTT cho trình duyệt (chạy qua WebSocket) -->
+  <script src="https://cdn.jsdelivr.net/npm/mqtt@5.10.1/dist/mqtt.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
